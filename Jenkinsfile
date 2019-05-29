@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label "jenkins-nodejs"
+    label "jenkins-elixir"
   }
   environment {
     ORG = 'skord'
