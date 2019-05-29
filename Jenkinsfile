@@ -22,8 +22,7 @@ pipeline {
           sh "mix local.hex --force"
           sh "mix local.rebar --force"
           sh "mix do deps.get, deps.compile"
-          sh "cd assets"
-          sh "npm install"
+          sh "cd assets && npm install"
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
           dir('./charts/preview') {
