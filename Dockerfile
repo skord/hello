@@ -1,4 +1,4 @@
-FROM elixir:1.8.2-otp-22 as distillery
+FROM elixir:1.8.2-otp-22 
 ENV MIX_ENV prod
 WORKDIR /opt/app
 COPY . /opt/app
@@ -8,14 +8,6 @@ RUN mix local.hex --force && \
     mix local.rebar --force
 RUN mix do deps.get, deps.compile 
 RUN mix release --env=prod
-
-#---
-# FROM alpine:3.9
-# RUN apk upgrade --no-cache && \
-#     apk add --no-cache bash openssl
-# WORKDIR  /opt/app
-# ENV MIX_ENV prod
-# COPY --from=distillery /opt/app/_build/prod /opt/app
 ENV PORT 4000
 EXPOSE 4000
 CMD ["/opt/app/_build/prod/rel/hello/bin/hello", "foreground"]
