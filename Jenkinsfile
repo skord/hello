@@ -47,7 +47,7 @@ pipeline {
           sh "jx step tag --version \$(cat VERSION)"
         }
         // container('jenkinsxio/jx:2.0.119')
-        container('nodejs') {
+        container('elixir') {
           sh "npm install"
           sh "CI=true DISPLAY=:99 npm test"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
