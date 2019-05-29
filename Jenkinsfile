@@ -60,7 +60,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        container('nodejs') {
+        container('elixir') {
           dir('./charts/hello') {
             sh "jx step changelog --batch-mode --version v\$(cat ../../VERSION)"
 
