@@ -19,6 +19,7 @@ pipeline {
       }
       steps {
         container('elixir') {
+          sh "mix local.hex --force"
           sh "mix do deps.get, deps.compile"
           sh "cd assets"
           sh "npm install"
