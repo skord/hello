@@ -1,6 +1,7 @@
-FROM elixir:1.8.2-otp-22 
-RUN apt-get update && \
-    apt-get -y dist-upgrade
+FROM elixir:1.8.2-otp-22-alpine 
+RUN apk update && \
+    apk upgrade && \
+    apk add bash openssl
 ENV MIX_ENV prod
 WORKDIR /opt/app
 COPY . /opt/app
