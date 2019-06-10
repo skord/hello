@@ -13,14 +13,14 @@ config :hello,
 # Configures the endpoint
 config :hello, HelloWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "Yk/tPIejGOXGZ2+qJwIxjvrKBGv+sI4NDoUW4eU9VbgFsKbDOPunnTSlZTt7j4Uj",
+  secret_key_base: {:system, "SECRET_KEY_BASE"},
   render_errors: [view: HelloWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Hello.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+  metadata: [:request_id, :application, :module, :line]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

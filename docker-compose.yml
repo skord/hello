@@ -1,0 +1,17 @@
+---
+version: '3'
+services:
+  postgres:
+    image: postgres:9
+    environment: 
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=appuser
+      - POSTGRES_PASSWORD=apppassword
+      - POSTGRES_DB=appdb
+  app:
+    build: .
+    environment:
+      - DATABASE_URL=ecto://appuser:apppassword@postgres/appdb
+      - SECRET_KEY_BASE=uDRTROPIb13LN9ihkQQDZ+TSt8jCh6Eoee1AqxH/eoYqyXRCzVkU9lvgNo6vbWEu
+    ports:
+      - "4000:4000"

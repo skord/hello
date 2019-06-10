@@ -7,6 +7,7 @@ defmodule Hello.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
+    Confex.resolve_env!(:hello)
     children = [
       # Start the Ecto repository
       Hello.Repo,

@@ -20,7 +20,7 @@ defmodule Hello.MixProject do
   def application do
     [
       mod: {Hello.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :confex]
     ]
   end
 
@@ -43,7 +43,8 @@ defmodule Hello.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:distillery, "~> 2.0"}
+      {:distillery, "~> 2.0"},
+      {:confex, "~> 3.4.0"}
     ]
   end
 
